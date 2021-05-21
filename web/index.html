@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es" class="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title> Sign In | ¡Bienvenido!  </title>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="144x144" href="./Librerias/1.png">
+    <link rel="shortcut icon" href="./Librerias/1.png">
+    <meta name="theme-color" content="#3063A0"><!-- Google font -->
+    <!-- BEGIN PLUGINS STYLES -->
+    <link rel="stylesheet" href="./Librerias/all.min.css"><!-- END PLUGINS STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link rel="stylesheet" href="./Librerias/theme.min.css" data-skin="default">
+    <link rel="stylesheet" href="./Librerias/custom.css">
+   
+  <style type="text/css"></style></head>
+  <body class="default-skin">
+
+    <main class="auth auth-floated">
+      <!-- form -->
+      <form class="auth-form"  action="./" method="post" id="form_acceso"  autocomplete="off">
+        <div class="mb-4">
+          <div class="mb-3">
+            <img class="rounded" src="./Librerias/1.png" alt="" height="170">
+           
+          </div>
+          <h1 class="h3"> Iniciar Sesión </h1>
+        </div>
+       
+        </p><!-- .form-group -->
+        <div class="form-group mb-4">
+          <label class="d-block text-left" for="Usuario">Usuario: </label> <input type="text" name="Usuario" id="Usuario" placeholder="Ingrese su usuario" class="form-control form-control-lg"  autofocus="">
+        </div><!-- /.form-group -->
+        <!-- .form-group -->
+        <div class="form-group mb-4">
+            <label class="d-block text-left" for="Password">Contraseña</label> <input type="password" placeholder="Ingrese su contraseña" id="Password" name="Password" class="form-control form-control-lg" >
+        </div><!-- /.form-group -->
+        <!-- .form-group -->
+        <div class="form-group mb-4">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">🔐 Iniciar Sesión</button>
+        </div><!-- /.form-group -->
+        <!-- .form-group -->
+   
+ 
+        <p class="mb-0 px-3 text-muted text-center"> © 2021 - Todos los derechos reservados. <a href="#">Aquí</a>
+        </p>
+      </form><!-- /.auth-form -->
+      <!-- .auth-announcement -->
+      <div id="announcement" class="auth-announcement" style="background-image: url('Librerias/1.png');">
+        <div class="announcement-body">
+          <h2 class="announcement-title"> !BIENVENIDOS AL Sistema De Control de Obras Civiles y Proyección del Consumo de Materiales - (SCOCPCM)! </h2><a href="#" class="btn btn-success"><i class="">←</i> Inicia Sesión</a>
+        </div>
+     <!-- particles.js container -->
+<div id="particles-js"></div>
+     </div></div><!-- /.auth-announcement -->
+    </main><!-- /.auth -->
+    <!-- BEGIN BASE JS -->
+    <script src="./Librerias/jquery.min.js"></script>
+    <script src="./Librerias/bootstrap.min.js"></script> <!-- END BASE JS -->
+    <!-- BEGIN PLUGINS JS -->
+  <!-- scripts -->
+<script src="./js/particles.js"></script>
+<script src="js/js/app.js"></script>
+
+<!-- stats.js -->
+<script src="./js/js/lib/stats.js"></script>
+<script>
+  var count_particles, stats, update;
+  stats = new Stats;
+  stats.setMode(0);
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.left = '0px';
+  stats.domElement.style.top = '0px';
+  document.body.appendChild(stats.domElement);
+  count_particles = document.querySelector('.particles-js');
+  update = function() {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+</script>
+ <link href="./Librerias/toastr.min.css" rel="stylesheet" type="text/css"/>
+    <script src="./Librerias/toastr.js" type="text/javascript"></script>
+    <script src="./js/ProcesosLogin.js" type="text/javascript"></script>
+</body></html>
