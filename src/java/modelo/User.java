@@ -181,5 +181,31 @@ public class User extends ConexionServer{
 
         return false;
     }
+        
+        public boolean modificarDatos() {
+
+        try {
+            
+            String pass="";
+            if (clave.isEmpty()) {
+                pass="";   
+            }else
+            {
+                pass="clave=EncryptbyPassphrase('clave','"+clave+"'),";
+            }
+            String miQuery = "update Usuario set nombres='" + nombres + "',apellidos='" + apellidos + "',usuario='" + usuario + "',"+pass+"cargo='" + cargo + "',estado='" + estado + "' where idusuario=" + idusuario + ";";
+            int estado = 0;
+            state = getConexion().createStatement();
+            estado = state.executeUpdate(miQuery);
+            if (estado == 1) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+    }
     
 }

@@ -77,13 +77,27 @@
                   </li>
                   <li class="parent"><a href="#"><i class="icon mdi mdi-account-add"></i><span>Usuarios</span></a>
                     <ul class="sub-menu">
-                        <li><a href="../usuarios/">  Administrar <span class="icon mdi mdi-plus-circle-o"></span></a>
+                        <li><a href="../usuarios/">  Administrar <span class="icon mdi mdi-accounts-list-alt"></span></a>
                       </li>
                     
                     </ul>
                   </li>
                 
-                
+                   <li class="parent"><a href="#"><i class="icon mdi mdi-settings-square"></i><span>Proyectos</span></a>
+                    <ul class="sub-menu">
+                        <li><a href="../proyectos/">  Administrar <span class="icon mdi mdi-settings"></span></a>
+                      </li>
+                    
+                    </ul>
+                  </li>
+                  
+                      <li class="parent"><a href="#"><i class="icon mdi mdi-settings-square"></i><span>Clientes</span></a>
+                    <ul class="sub-menu">
+                        <li><a href="../clientes/">  Administrar <span class="icon mdi mdi-cast-connected"></span></a>
+                      </li>
+                    
+                    </ul>
+                  </li>
                   
                 </ul>
               </div>

@@ -16,6 +16,10 @@
         <servlet-name>delete</servlet-name>
         <servlet-class>controlador.delete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>actualizardatos</servlet-name>
+        <servlet-class>controlador.actualizardatos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>delete</servlet-name>
         <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizardatos</servlet-name>
+        <url-pattern>/actualizardatos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

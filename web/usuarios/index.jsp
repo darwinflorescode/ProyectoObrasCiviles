@@ -43,7 +43,7 @@
                         <a class="dropdown-item" href="#"><span class="icon mdi mdi-download"></span> Pdf</a>
                     </div>
                 </div>
-                <div class="title" ><a href="javascript: void()" class="btn btn-space btn-success md-trigger" data-modal="modal"><i class="icon mdi mdi-plus"> </i></a>  Mantenimiento de Usuarios</div>
+                <div class="title" ><a href="javascript: void()" class="btn btn-space btn-success md-trigger" data-modal="modal"><i class="icon mdi mdi-plus"> </i></a>  Administración de Usuarios</div>
 
             </div>
             <div class="add-brand-messages_u"></div>
@@ -129,17 +129,86 @@
 
     </div>
 </div>
+<!--Fin formulario de insertar datos-->
+<div class="modal-overlay"></div>
+
+<!--Este es el formulario de modificación de datos del usuario-->
+<div class="modal fade colored-header colored-header-primary"  id="modal_editar" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width: 100% !important">
+        <div class="modal-content">
+            <div class="modal-header modal-header-colored" align="center">
+                <h2 class="modal-title">MODIFICAR DATOS DEL USUARIO <span class="icon mdi mdi-account-box-o"></span></h2>
+                <button class="close modal-close" type="button" data-dismiss="modal" aria-hidden="true"><span class="mdi mdi-close"></span></button>
+            </div>
+            <div class="modal-body form">
+                <form class="formNormal" id="form_user_edit" autocomplete="off" method="POST"  novalidate="">
+                    <div align="center">
+                        <b>DATOS PERSONALES DEL USUARIO</b>
+                    </div>
+                    <hr>
+                    <div class="add-brand-messages_u"></div>
+                    <div class="row no-margin-y">
+                        <div class="form-group col-sm-6">
+                            <input type="hidden" name="id_user" id="id_user" >
+                            <label for="nombres_e"><b>Nombres: </b> <span class="text-danger">*</span></label>
+                            <input class="form-control" data-parsley-minlength="2" name="nombres_e" id="nombres_e" required="true" type="text" placeholder="Nombres">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="apellidos_e"><b>Apellidos:</b><span class="text-danger">*</span></label>
+                            <input class="form-control" data-parsley-minlength="2" name="apellidos_e"  id="apellidos_e" required="true" type="text" placeholder="Apellidos">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cargo_e"><b>Cargo: </b><span class="text-danger">*</span></label>
+                        <input class="form-control" name="cargo_e" data-parsley-minlength="2" id="cargo_e" required="true" type="text" placeholder="Cargo del usuario">
+                    </div>
+                    <div align="center">
+                        <b>DATOS DE INGRESO AL SISTEMA</b>
+                    </div>
+                    <hr>
+                    <div class="row no-margin-y">
+                        <div class="form-group col-sm-6">
+
+                            <label for="usuario_e"><b>Usuario: </b> <span class="text-danger">*</span></label>
+                            <input class="form-control" id="usuario_e" name="usuario_e" data-parsley-minlength="2" required="true" type="text" placeholder="Usuario">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="clave_e"><b>Contraseña: </b><span class="text-danger">*</span></label>
+                            <input class="form-control" id="clave_e" name="clave_e"  type="password" placeholder="Contraseña">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="estado_e"><b>Estado: </b><span class="text-danger">*</span></label>
+                            <select class="form-control" id="estado_e" name="estado_e" required="">
+                                <option value="">Seleccione...</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary modal-close" type="button" data-dismiss="modal"> <span class="icon mdi mdi-close"></span> Cancelar</button>
+                                <button class="btn btn-success" type="submit" id="save_e" ><span class="ticon mdi mdi-save"></span> Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!--Fin formulario de modificar datos-->
 <div class="modal-overlay"></div>
 
 <%@include file="../principal/Pie.jsp" %>
 
 <script type="text/javascript">
-    $.fn.niftyModal('setDefaults', {
-        overlaySelector: '.modal-overlay',
-        contentSelector: '.modal-content',
-        closeSelector: '.modal-close',
-        classAddAfterOpen: 'modal-show'
-    });
 
 
 
@@ -154,10 +223,12 @@
 
     $(document).ready(function () {
         cargar_vista();
+     
     });
 
 </script>
 <script>
+    //Elimianr Usuario
     function eliminaruser(id) {
         if (confirm("Estimado Usuario.\n¿Realmente desea eliminar este usuario?\n\n ---------------------------------------\nAdvertencia:\n-Se eliminaran todos los datos relacionados")) {
             $.ajax({
@@ -183,8 +254,8 @@
                     } else {
                         alert("Ha ocurrido un error" + datos);
                     }
-                    
-                     window.setTimeout(function () {
+
+                    window.setTimeout(function () {
                         $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
                             $(this).remove();
                         });
@@ -198,7 +269,30 @@
             return false;
         }
     }
-    ;
+
+
+
+    function editar_usuario(id)
+    {
+
+        $("#modal_editar").on('shown.bs.modal', function () {
+            $('#nombres_e').focus();
+        });
+
+
+        var nombre = $('#nombres_e' + id).val();
+        var apellidos = $('#apellidos_e' + id).val();
+        var cargo = $('#cargo_e' + id).val();
+        var usuario = $('#usuario_e' + id).val();
+        var estado = $('#estado_e' + id).val();
+
+        $('#nombres_e').val(nombre);
+        $('#apellidos_e').val(apellidos);
+        $('#cargo_e').val(cargo);
+        $('#usuario_e').val(usuario);
+        $('#estado_e').val(estado);
+        $('#id_user').val(id);
+    }
 
 </script>
 
