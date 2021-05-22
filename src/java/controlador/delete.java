@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Cliente;
 import modelo.User;
 
 /**
@@ -38,6 +39,18 @@ public class delete extends HttpServlet {
                 User user =  new User();
                 user.setIdusuario(id);
                 if (user.eliminarDatos()) {
+                    out.println("eliminado");
+                    
+                }else
+                {
+                       out.println("Error");
+                }
+                                
+            }else  if (request.getParameter("client")!=null) {
+                
+                Cliente client =  new Cliente();
+                client.setIdcliente(id);
+                if (client.eliminarDatos()) {
                     out.println("eliminado");
                     
                 }else

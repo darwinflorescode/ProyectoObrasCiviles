@@ -18,7 +18,7 @@ import modelo.User;
  *
  * @author DARWINFLORES
  */
-public class insertardatos extends HttpServlet {
+public class actualizardatos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,15 +36,15 @@ public class insertardatos extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             if (request.getParameter("user") != null) {
                 User u = new User();
+                u.setIdusuario(Integer.parseInt(request.getParameter("id_user")));
+                u.setNombres(request.getParameter("nombres_e"));
+                u.setApellidos(request.getParameter("apellidos_e"));
+                u.setCargo(request.getParameter("cargo_e"));
+                u.setUsuario(request.getParameter("usuario_e"));
+                u.setClave(request.getParameter("clave_e"));
+                u.setEstado(request.getParameter("estado_e"));
 
-                u.setNombres(request.getParameter("nombres_n"));
-                u.setApellidos(request.getParameter("apellidos_n"));
-                u.setCargo(request.getParameter("cargo_n"));
-                u.setUsuario(request.getParameter("usuario_n"));
-                u.setClave(request.getParameter("clave_n"));
-                u.setEstado(request.getParameter("estado_n"));
-
-                if (u.insertardatos()) {
+                if (u.modificarDatos()) {
                     out.println("guardado");
                 } else {
                     out.println("error1");
@@ -52,15 +52,19 @@ public class insertardatos extends HttpServlet {
 
             } else if (request.getParameter("client") != null) {
                 Cliente client = new Cliente();
-                client.setDescripcion(request.getParameter("descripcion_n"));
-                client.setNombreContacto(request.getParameter("nombrecontacto_n"));
+                client.setIdcliente(Integer.parseInt(request.getParameter("id")));
+                client.setDescripcion(request.getParameter("descripcion_e"));
+                client.setNombreContacto(request.getParameter("nombrecontacto_e"));
+              
 
-                if (client.insertardatos()) {
+                if (client.modificarDatos()) {
                     out.println("guardado");
                 } else {
                     out.println("error1");
                 }
+
             }
+
         }
     }
 
